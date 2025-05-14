@@ -1,0 +1,8 @@
+#!bin/bash
+# WARNING: this script should run as sudo or another privileged user
+
+if ! systemctl is-active --quiet mysql; then
+    systemctl start mysql
+fi
+
+mysql trylaravel < ../database/sql/init-mysql-context.sql
